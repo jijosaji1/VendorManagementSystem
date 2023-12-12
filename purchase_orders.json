@@ -1,0 +1,13 @@
+{
+	"po_number": "PO2",
+	"order_date": "2023-12-01T22:00:00Z",
+	"delivery_date": "2023-12-15T12:00:00Z",
+	"items": {
+		"bat": 3,
+		"pads": 8
+	},
+	"quantity": 11,
+	"status": "pending",
+	"issue_date": "2023-12-01T22:01:00Z",
+	"vendor": 4
+}
