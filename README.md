@@ -41,7 +41,3 @@ Here the po_number must be unique.
 
 7. /api/purchase_orders/{po_id}/acknowledge : This endpoint allows POST requests only. This endpoint is used to acknowledge a purchase order by  the vendor. No data needs to be passed while sending the POST request.
 
-
-3.Sending PUT request,  enter the correct uri and provide the correct information and then click on Send. To get the details of the vendor or purchase order that needs to be updated, first do a GET request for the specific vendor id or purchase order id. Then copy the JSON data and modify it.
-
-4.Sending DELETE request,  enter the correct uri and then click on Send.
