@@ -18,6 +18,9 @@ class PurchaseOrder(models.Model):
     issue_date = models.DateTimeField()
     acknowledgment_date = models.DateTimeField(null=True, blank=True)
 
+"""
+Function to perform actions before saving any entry to the PurchaseOrder model
+"""
 @receiver(pre_save, sender = PurchaseOrder)
 def purchase_order_change(sender, instance, **kwargs):
     on_time_delivery_rate = 0.0
@@ -56,8 +59,8 @@ def purchase_order_change(sender, instance, **kwargs):
         if on_time_delivery_rate==0.0 and avg_quality_rating==0.0 and fulfillment_rate==0.0:
             return
         save_changes_to_db(vendor_id=vendor_id,
-                           on_time_delivery_rate=on_time_delivery_rate,
-                           quality_rating_avg=avg_quality_rating,
-                           fulfillment_rate=fulfillment_rate)
+                            on_time_delivery_rate=on_time_delivery_rate,
+                            quality_rating_avg=avg_quality_rating,
+                            fulfillment_rate=fulfillment_rate)
     except PurchaseOrder.DoesNotExist:
         pass

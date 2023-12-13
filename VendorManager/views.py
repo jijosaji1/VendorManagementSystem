@@ -7,6 +7,15 @@ from rest_framework import status
 from serializers import VendorSerializer
 from .models import Vendor
 
+"""
+Allows GET and POST request to /api/vendors endpoint
+
+Args:
+    request: A http request.
+
+Returns:
+    Response: Response to the http request.
+"""
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def vendor_details(request):
@@ -21,6 +30,15 @@ def vendor_details(request):
         serializer = VendorSerializer(vendors, many=True)
         return Response(serializer.data)
 
+"""
+Allows GET, PUT and DELETE request to /api/vendors/vendor_id endpoint
+
+Args:
+    request: A http request.
+
+Returns:
+    Response: Response to the http request.
+"""
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def vendor(request, vendor_id):
@@ -34,16 +52,25 @@ def vendor(request, vendor_id):
         return Response(serializer.data)
     
     elif request.method == 'PUT':
-        serializer = VendorSerializer(vendor, data=request.data)
+        serializer = VendorSerializer(vendor, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
     elif request.method == 'DELETE':
         vendor.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+"""
+Allows GET request to /api/vendors/vendor_id/performance endpoint
+
+Args:
+    request: A http request.
+
+Returns:
+    Response: Response to the http request.
+"""
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def vendor_performance(request, vendor_id):
