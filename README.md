@@ -80,15 +80,26 @@
    ```
    **Note** : The credentials are used to generate the token for sending the Http request.
 
-### 3. Creating Bearer Token for Authentication
+### 3. Running Test Suites
+ **Note**: 
+ Make sure to run the server before starting to send http requests.
+ Make sure to follow the steps in Section 2 and 3 before moving forward
+ 1. Running Test for Vendor Model
+    ```bash
+    python manage.py test VendorManager.tests
+ 2. Running Test for Purchase Orders Model
+    ```bash
+    python manage.py test PurchaseOrder.tests
+    ```
+### Note: Follow the below steps to do customized testing of API endpoints
+### 4. Creating Bearer Token for Authentication
  **Note**: 
  Make sure to run the server before starting to send http requests. Make use of a software like Postman or Insomnia to send the http requests. 
  For sending http requests I have used Insomnia.
 1. Send a POST request to http://127.0.0.1:8000/auth/login. The data of the POST request must be JSON and must have username and password as keys.
-
 2. Now apply the token received under bearer token with the prefix as Token.
 
-### 4. Sending Http requests:
+### 5. Sending Http requests:
  **Note**: 
  Make sure to run the server before starting to send http requests. Make use of a software like Postman or Insomnia to send the http requests. 
  For sending http requests I have used Insomnia. 
@@ -96,7 +107,5 @@
  
 1. Sending POST request, enter the correct uri and provide the correct information and then click on Send.
 2. Sending GET request,  enter the correct uri and then click on Send.
-
 3. Sending PUT request,  enter the correct uri and provide the correct information and then click on Send. To get the details of the vendor or purchase order that needs to be updated, first do a GET request for the specific vendor id or purchase order id. Then copy the JSON data and modify it.
-
 4. Sending DELETE request,  enter the correct uri and then click on Send.
