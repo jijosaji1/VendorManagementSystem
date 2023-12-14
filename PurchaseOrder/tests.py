@@ -65,6 +65,22 @@ class OrderApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     """
+    Tests the GET request to /api/purchase_orders/ to get details of a specific purchase orders.
+    """
+    def test_order_details_get_order(self):
+        response = self.client.get(f'/api/purchase_orders/{self.purchase_order.po_id}')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data.get("po_id"), self.purchase_order.po_id)
+
+    """
+    Tests the GET request to /api/purchase_orders/ to get details of all purchase orders of a specific vendor.
+    """
+    def test_order_details_get_vendor_order(self):
+        response = self.client.get(f'/api/purchase_orders/?vendor_id={self.vendor.vendor_id}')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data[0].get("vendor"), self.purchase_order.vendor.vendor_id)
+
+    """
     Tests the PUT request to /api/purchase_orders/po_id to update details of a specific purchase order.
     """
     def test_order_put(self):

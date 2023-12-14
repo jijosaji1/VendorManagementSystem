@@ -50,6 +50,15 @@ class VendorApiTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     """
+    Tests the GET request to /api/vendors/ to get details of a specific vendor.
+    """
+    def test_vendor_details_get_vendor(self):
+        self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
+        response = self.client.get(f'/api/vendors/{self.vendor.vendor_id}')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data.get("vendor_id"), self.vendor.vendor_id)
+
+    """
     Tests the PUT request to /api/vendors/vendor_id to update the details of a specific vendor.
     """
     def test_vendor_put(self):
