@@ -74,6 +74,7 @@ Returns:
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def vendor_performance(request, vendor_id):
+    print("getting vendor performance")
     try:
         vendor = Vendor.objects.get(pk=vendor_id)
     except Vendor.DoesNotExist:

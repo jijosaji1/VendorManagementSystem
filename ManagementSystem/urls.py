@@ -22,5 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/vendors/', include('VendorManager.urls')),
     path('api/purchase_orders/', include('PurchaseOrder.urls')),
-    path('auth/login/', obtain_auth_token)
+    path('auth/login/', obtain_auth_token),
+    path('api/vendors', include('VendorManager.urls')),
+    path('api/purchase_orders', include('PurchaseOrder.urls')),
+    path('auth/login', obtain_auth_token)
 ]

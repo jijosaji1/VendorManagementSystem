@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from django.shortcuts import render
 from .models import HistoricalPerformance
 from VendorManager.models import Vendor
@@ -10,7 +10,7 @@ def save_changes_to_db(vendor_id,
                        fulfillment_rate=0.0):
     performance_model = HistoricalPerformance()
     performance_model.vendor = Vendor.objects.get(pk=vendor_id)
-    performance_model.date = datetime.now()
+    performance_model.date = datetime.now(timezone.utc)
     performance_model.on_time_delivery_rate = on_time_delivery_rate
     performance_model.quality_rating_avg = quality_rating_avg
     performance_model.average_response_time = average_response_time
